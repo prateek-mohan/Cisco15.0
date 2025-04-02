@@ -1,0 +1,370 @@
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 5.15.0-133-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+Last login: Tue Apr  1 17:41:11 2025 from 10.110.162.30
+[?2004hcloud-user@cndp-sigma-server-master-1:~$ cn
+[?2004l
+      Welcome to the smf CLI on cndp-sigma-server/cn
+      Copyright © 2016-2023, Cisco Systems, Inc.
+      All rights reserved.
+    
+User admin last logged in 2025-04-01T17:41:13.248539+00:00, to ops-center-cn-cn-ops-center-59d65c8f65-fp28v, from 193.107.183.164 using cli-ssh
+admin connected from 193.107.183.164 using ssh on ops-center-cn-cn-ops-center-59d65c8f65-fp28v
+[?7h[cndp-sigma-server/cn] smf# show running-config | nomore
+Tue Apr  1  17:47:15.423 UTC+00:00
+profile compliance comp1
+ service nsmf-pdusession
+  version uri v1
+  version full 1.0.0
+  version spec 15.4.0
+ exit
+ service namf-comm
+  version uri v1
+  version full 1.0.0
+  version spec 15.4.0
+ exit
+ service n1
+  version uri v1
+  version full 1.0.0
+  version spec 15.4.0
+ exit
+ service n2
+  version uri v1
+  version full 1.0.0
+  version spec 15.4.0
+ exit
+ service nudm-sdm
+  version uri v2
+  version full 1.0.0
+  version spec 15.4.0
+ exit
+ service nudm-uecm
+  version uri v1
+  version full 1.0.0
+  version spec 15.4.0
+ exit
+ service nnrf-disc
+  version uri v1
+  version full 1.0.0
+  version spec 15.4.0
+ exit
+ service nnrf-nfm
+  version uri v1
+  version full 1.0.0
+  version spec 15.4.0
+ exit
+ service npcf-smpolicycontrol
+  version uri v1
+  version full 1.0.0
+  version spec 15.4.0
+ exit
+ service nchf-convergedcharging
+  version uri v2
+  version full 1.0.0
+  version spec 15.3.0
+ exit
+ service x1
+  version spec 1.8.1
+ exit
+ service x2
+  version spec 1.4.1
+ exit
+exit
+profile network-element amf amf1
+ nf-client-profile AP1
+exit
+profile network-element udm udm1
+ nf-client-profile UP1
+exit
+profile network-element pcf pcf1
+ nf-client-profile        PP1
+ failure-handling-profile pcfFH
+ rulebase-prefix          cbn#
+ predefined-rule-prefix   crn#
+exit
+profile network-element chf chf1
+ nf-client-profile        CP1
+ failure-handling-profile FH2
+exit
+profile network-element chf chgser1
+exit
+profile network-element upf upf1
+ node-id              n4-peer-upf1
+ n4-peer-address ipv4 30.30.30.61
+ n4-peer-address ipv6 2001:4888:50:50::61
+ n4-peer-port         8805
+ upf-group-profile    UPF_GROUP
+ dnn-list             [ apn1 ims internet radiuss6b.com starent.com ]
+ capacity             10
+ priority             1
+ dual-stack-transport true
+exit
+profile network-element upf upf2
+ node-id              n4-peer-upf2
+ n4-peer-address ipv4 50.50.2.4
+ n4-peer-port         8805
+ upf-group-profile    UPF_GROUP
+ dnn-list             [ apn1 ims internet starent.com ]
+ capacity             10
+ priority             1
+ dual-stack-transport true
+exit
+profile network-element upf upf3
+ node-id              n4-peer-upf3
+ n4-peer-address ipv4 50.50.3.4
+ n4-peer-port         8805
+ upf-group-profile    UPF_GROUP
+ dnn-list             [ apn1 ims internet starent.com ]
+ capacity             10
+ priority             1
+ dual-stack-transport true
+exit
+profile network-element upf upf4
+ node-id           n4-peer-upf4
+ n4-peer-address ipv4 50.50.45.4
+ n4-peer-port      8805
+ upf-group-profile UPF_GROUP
+ dnn-list          [ ims internet starent.com ]
+ capacity          10
+ priority          1
+exit
+profile network-element upf upf5
+ node-id           n4-peer-upf5
+ n4-peer-address ipv4 50.50.5.4
+ n4-peer-port      8805
+ upf-group-profile UPF_GROUP
+ dnn-list          [ ims internet starent.com ]
+ capacity          10
+ priority          1
+exit
+profile network-element upf upf6
+ node-id           n4-peer-upf6
+ n4-peer-address ipv4 50.50.8.4
+ n4-peer-port      8805
+ upf-group-profile UPF_GROUP
+ dnn-list          [ ims internet starent.com ]
+ capacity          10
+ priority          1
+exit
+profile network-element upf upf7
+ node-id           n4-peer-upf7
+ n4-peer-address ipv4 50.50.9.4
+ n4-peer-port      8805
+ upf-group-profile UPF_GROUP
+ dnn-list          [ ims internet starent.com ]
+ capacity          10
+ priority          1
+exit
+profile upf-group UPF_GROUP
+ failure-profile pcfFH
+ supported-features [ secondary-pdr ]
+exit
+profile upf-group upfFH
+ failure-profile pfcpFH
+ supported-features [ secondary-pdr ]
+exit
+profile wps dynamic-wps-radiuss6b.com
+ dscp n3 0x18
+ message-priority [ pfcp gtpc ]
+ arp 3,7
+exit
+profile wps wps1
+ message-priority [ pfcp ]
+ arp 2,5,7,10
+exit
+profile icmpv6 icmpprf1
+ options virtual-mac b6:6d:57:45:45:45
+exit
+profile charging chgprf1
+ method                  [ online offline ]
+ limit volume 4000000000
+ limit duration 7200
+ limit rating-group volume 20000000
+ triggers session [ max-number-of-changes-in-charging-conditions ]
+ tariff-time-change minute 10
+ tariff-time-change hour 7
+ max-charging-condition  5
+ tight-interworking-mode true
+ quota request always
+ quota suppress triggers [ qht ]
+ max-deferred-urr        50
+ reporting-level online rating-group
+ reporting-level offline service-id
+ metering-method         duration-volume
+ requested-service-unit volume total 10000000
+exit
+profile charging-characteristics 1
+ charging-profile chgprf1
+exit
+profile failure-handling amfFH
+ interface n11
+  message n1n2transfer
+   cause-code temp-reject-register
+    action retry timeout 2000 max-retry 3
+   exit
+   cause-code temp-reject-handover
+    action retry timeout 2000 max-retry 3
+   exit
+  exit
+ exit
+exit
+profile failure-handling pcfFH
+ interface pfcp
+  message N4SessionEstablishmentReq
+   cause-code pfcp-entity-in-congestion action retry-terminate max-retry 1
+   cause-code system-failure action terminate
+   cause-code service-not-supported action terminate
+   cause-code no-resource-available action retry-terminate max-retry 1
+   cause-code no-response-received action retry-terminate max-retry 1
+   cause-code reject action terminate
+  exit
+ exit
+exit
+profile failure-handling pfcpFH
+ interface pfcp
+  message N4SessionEstablishmentReq
+   cause-code pfcp-entity-in-congestion action retry-terminate max-retry 3
+   cause-code system-failure action terminate
+   cause-code service-not-supported action terminate
+   cause-code no-resource-available action retry-terminate max-retry 3
+   cause-code no-response-received action retry-terminate max-retry 1
+   cause-code reject action terminate
+  exit
+  message N4SessionModificationReq
+   cause-code mandatory-ie-incorrect action terminate
+   cause-code session-ctx-not-found action terminate
+   cause-code reject action terminate
+  exit
+ exit
+exit
+profile access accessprofile1
+ n1 t3591-pdu-mod-cmd timeout 2 max-retry 3
+ n1 t3592-pdu-rel-cmd timeout 2 max-retry 5
+ n26 idft enable timeout 60
+ n2 idft enable timeout 60
+ gtpc gtpc-failure-profile amfFH
+ eps-fallback cbr delay 10000 max-retry 10 timeout 3
+exit
+profile radius
+ deadtime  20
+ max-retry 3
+ timeout   2
+ server 141.5.81.5 1812
+  type     auth
+  secret   $8$C7F5/kOiM+3ifCDMIivkFAwJIvc/IRefYBp9v+FLF9Q=
+  priority 1
+ exit
+ server 141.5.81.5 1813
+  type     acct
+  secret   $8$oitiumT8NhsosgEDvzo7BsGUgVwVRcS6c9EFnV9Bw0M=
+  priority 1
+ exit
+ attribute
+  instance 1
+   nas-identifier CISCO-SMF1
+   nas-ip         192.11.23.215
+  exit
+ exit
+ accounting
+  algorithm first-server
+  max-retry 3
+  timeout   1
+  attribute
+   instance 1
+    nas-identifier CISCO-SMF1
+    nas-ip         192.11.23.215
+   exit
+  exit
+ exit
+ server-group starentcom
+  server auth 141.5.81.5 1812
+  exit
+  server acct 141.5.81.5 1813
+  exit
+  attribute
+   instance 1
+    nas-identifier CISCO-SMF1
+    nas-ip         192.11.23.215
+   exit
+  exit
+  accounting
+   attribute
+    instance 1
+     nas-identifier CISCO-SMF1
+     nas-ip         192.11.23.215
+    exit
+   exit
+  exit
+ exit
+exit
+profile radius-dynamic-author
+ secret $8$F12Q8ewmYaWB28XYig0R1RKaHmkUk24N592IOtuEIkM=
+ client 141.5.81.5 vrf default
+  secret $8$eGg86Cy1ESphin8Ty7hsXQr0S/Im9GoVTOKbBn6GxhE=
+ exit
+exit
+profile dnn apn1
+ network-element-profiles chf chf1
+ network-element-profiles amf amf1
+ network-element-profiles pcf pcf1
+ network-element-profiles udm udm1
+ dnn apn1 network-function-list [ upf1 ]
+ charging-profile chgprf1
+ virtual-mac      b6:6d:47:47:47:47
+ ppd-profile      ppd1
+ ssc-mode 1 allowed [ 2 ]
+ session type IPV4V6
+ upf apn apn1
+ qos-profile      5qi-to-dscp-mapping-table
+exit
+profile dnn ims
+ network-element-profiles chf chf1
+ network-element-profiles amf amf1
+ network-element-profiles pcf pcf1
+ network-element-profiles udm udm1
+ dnn ims network-function-list [ upf1 ]
+ charging-profile chgprf1
+ virtual-mac      b6:6d:47:47:47:47
+ ppd-profile      ppd1
+ wps-profile      wps1
+ ssc-mode 1 allowed [ 2 ]
+ session type IPV4V6
+ upf apn ims
+ qos-profile      abc
+exit
+profile dnn internet
+ network-element-profiles chf chf1
+ network-element-profiles amf amf1
+ network-element-profiles pcf pcf1
+ network-element-profiles udm udm1
+ dnn internet network-function-list [ upf1 ]
+ charging-profile chgprf1
+ virtual-mac      b6:6d:47:47:47:47
+ ppd-profile      ppd1
+ wps-profile      wps1
+ ssc-mode 1 allowed [ 2 ]
+ session type IPV4V6
+ upf apn internet
+ qos-profile      abc
+exit
+profile dnn ookla.com
+ network-element-profiles chf chf1
+ network-element-profiles amf amf1
+ network-element-profiles pcf pcf1
+ network-element-profiles udm udm1
+ dnn ookla.com network-function-list [ upf1 ]
+ charging-profile chgprf1
+ virtual-mac      b6:6d:47:47:47:47
+ ppd-profile      ppd1
+ ssc-mode 1 allowed [ 2 ]
+ session type IPV4V6
+ upf apn ookla.com
+ qos-profile      5qi-to-dscp-mapping-table
+exit
+profile dnn radiuss6b.com
+ network-element-profiles chf chf1
+ network-element-profiles amf amf1
+ network-element-profiles pcf pcf1
+ network-el
