@@ -3,17 +3,17 @@ Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 5.15.0-133-generic x86_64)
  * Documentation:  https://help.ubuntu.com
  * Management:     https://landscape.canonical.com
  * Support:        https://ubuntu.com/pro
-Last login: Wed Apr  2 05:10:29 2025 from 10.233.77.132
+Last login: Wed Apr  2 10:26:36 2025 from 10.110.156.243
 [?2004hcloud-user@cndp-sigma-server-master-1:~$ cn
 [?2004l
       Welcome to the smf CLI on cndp-sigma-server/cn
       Copyright © 2016-2023, Cisco Systems, Inc.
       All rights reserved.
     
-User admin last logged in 2025-04-02T05:10:30.591088+00:00, to ops-center-cn-cn-ops-center-5b497b7c6-j5q4v, from 193.107.183.164 using cli-ssh
+User admin last logged in 2025-04-02T10:26:40.696911+00:00, to ops-center-cn-cn-ops-center-5b497b7c6-j5q4v, from 193.107.183.164 using cli-ssh
 admin connected from 193.107.183.164 using ssh on ops-center-cn-cn-ops-center-5b497b7c6-j5q4v
 [?7h[cndp-sigma-server/cn] smf# show running-config | nomore
-Wed Apr  2  06:04:31.620 UTC+00:00
+Wed Apr  2  10:43:48.229 UTC+00:00
 profile compliance comp1
  service nsmf-pdusession
   version uri v1
